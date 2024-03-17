@@ -1,0 +1,41 @@
+<form class="example-form">
+    
+
+
+   
+  
+    <table>
+      <tr><td>    <mat-form-field class="example-full-width">
+          <mat-label>Article Name</mat-label>
+          <input matInput placeholder="Pizza">
+        </mat-form-field>
+    
+      
+          </td></tr>
+    <tr><td>  <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.nomcategorie }}</mat-option>
+      </mat-select>
+    </mat-form-field></td></tr>
+    <tr><td>
+      <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </td></tr>
+    <tr><td>     
+      <mat-form-field class="example-full-width">
+          <mat-label>Prix</mat-label>
+          <input matInput placeholder="image link">
+        </mat-form-field>
+    </td></tr>
+    <tr><td>  <mat-form-field class="example-full-width">
+      <mat-label>Image</mat-label>
+      <input matInput placeholder="image link">
+    </mat-form-field></td></tr>
+  </table>
+  
+  
+  </form>
+    

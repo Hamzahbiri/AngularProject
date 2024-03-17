@@ -3,9 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { LoginComponent } from './login/login.component';
+import { ArticleFormComponent } from './article-form/article-form.component';
 
 const routes: Routes = [
-  
+  {
+    path: "article-form",
+    pathMatch: 'full',
+    component: ArticleFormComponent
+  },
   {
     path: "login",
     pathMatch: 'full',
