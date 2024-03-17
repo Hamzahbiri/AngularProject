@@ -1,29 +1,36 @@
-import { Component } from '@angular/core';
-import { Category } from 'src/models/Category';
-import { CategoryService } from 'src/services/category.service';
+
+import { Component, OnInit } from '@angular/core';
+import { Article } from 'src/models/Article';
+import { ArticleService } from 'src/services/article.service';
 
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.css']
 })
-export class ArticleListComponent {
- 
-  constructor(private catService:CategoryService) {
-    
-   
+export class ArticleListComponent implements OnInit {
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'categoryName',
+    'description',
+    'prix',
+    'image',
+    'actions'
+  ];
+  tab: Article[] = [];
+
+  constructor(private articleService: ArticleService) { }
+
+  ngOnInit(): void {
+    this.getAll();
   }
-  tab:Category[]=[];
+
   getAll() {
-    this.catService.getAll().subscribe(
-      (categories:Category[])=>{
-        this.tab=categories
-        console.log (this.tab);
-      }   
-    )
+    this.articleService.getAll().subscribe(
+      (articles: Article[]) => {
+        this.tab = articles;
+      },
+    );
   }
-
-  
-
-
 }

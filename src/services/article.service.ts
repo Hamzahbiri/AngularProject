@@ -9,28 +9,30 @@ import { Article } from 'src/models/Article';
 export class ArticleService {
 
   constructor(private httpClient: HttpClient) {}
+ 
 
   save(article:Article): Observable<void>
   {
-    // return  this.httpClient.post<void>('localhost:8080/api', member);
+     return  this.httpClient.post<void>('http://localhost:8000/api/articles', article);
     return new Observable(observer => observer.next())
   }
 
   getById(id:string): Observable<Article>
   {
+    return  this.httpClient.get<Article>('http://localhost:8000/api/articles/'+id);
     // return  this.httpClient.post<void>('localhost:8080/api', member);
-    return new Observable(observer => observer.next())
+    //return new Observable(observer => observer.next())
   }
  
   deleteById(id:string):Observable<void>
   {
-        // return  this.httpClient.post<void>('localhost:8080/api', member);
-        return new Observable(observer => observer.next())
+       return  this.httpClient.delete<void>('localhost:8080/api/articles/'+id);
+      
   }
-  getAll(id:string):Observable<Article>
+  getAll():Observable<Article[]>
   {
-        // return  this.httpClient.post<void>('localhost:8080/api', member);
-        return new Observable(observer => observer.next())
+       return  this.httpClient.get<Article[]>('http://localhost:8000/api/articles');
+      
   }
 
 }

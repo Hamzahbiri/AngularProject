@@ -13,7 +13,6 @@ export class CategoryService {
   save(category:Category): Observable<void>
   {
     return  this.httpClient.post<void>('http://localhost:8000/api/categories', category);
-    //return new Observable(observer => observer.next())
   }
 
   getById(id:string): Observable<Category>
@@ -22,10 +21,11 @@ export class CategoryService {
     return new Observable(observer => observer.next())
   }
  
+
   deleteById(id:string):Observable<void>
   {
-        // return  this.httpClient.post<void>('localhost:8080/api', member);
-        return new Observable(observer => observer.next())
+        return  this.httpClient.delete<void>('localhost:8080/api/categories/'+id);
+       
   }
   getAll():Observable<Category[]>
   {
