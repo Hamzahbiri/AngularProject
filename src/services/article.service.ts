@@ -14,25 +14,28 @@ export class ArticleService {
   save(article:Article): Observable<void>
   {
      return  this.httpClient.post<void>('http://localhost:8000/api/articles', article);
-    return new Observable(observer => observer.next())
+ 
   }
 
-  getById(id:string): Observable<Article>
-  {
-    return  this.httpClient.get<Article>('http://localhost:8000/api/articles/'+id);
-    // return  this.httpClient.post<void>('localhost:8080/api', member);
-    //return new Observable(observer => observer.next())
+  getById(id: string): Observable<Article> {
+    return this.httpClient.get<Article>('http://localhost:8000/api/articles/' + id);
   }
- 
+  
+
+ update(article: Article): Observable<void> {
+  return this.httpClient.put<void>('http://localhost:8000/api/articles/' + article.id, article);
+}
+
   deleteById(id:string):Observable<void>
   {
-       return  this.httpClient.delete<void>('localhost:8080/api/articles/'+id);
-      
+    return this.httpClient.delete<void>('http://localhost:8000/api/articles/' + id);
   }
   getAll():Observable<Article[]>
   {
        return  this.httpClient.get<Article[]>('http://localhost:8000/api/articles');
       
   }
-
+  addArticle(article: Article): Observable<void> {
+    return this.httpClient.post<void>('http://localhost:8000/api/articles', article);
+  }
 }

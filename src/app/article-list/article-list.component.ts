@@ -1,7 +1,10 @@
 
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Article } from 'src/models/Article';
 import { ArticleService } from 'src/services/article.service';
+import { ArticleEditComponent } from '../article-edit/article-edit.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-article-list',
@@ -20,10 +23,51 @@ export class ArticleListComponent implements OnInit {
   ];
   tab: Article[] = [];
 
-  constructor(private articleService: ArticleService) { }
+  constructor(
+    private articleService: ArticleService,
+    public dialog: MatDialog
+  ) {
+    this.getAll();
+  }
+
 
   ngOnInit(): void {
     this.getAll();
+  }
+
+  deleteArticle(id: string) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '250px',
+      data: 'Are you sure you want to delete this article?'
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // User confirmed deletion
+        this.articleService.deleteById(id).subscribe(
+          () => {
+            this.tab = this.tab.filter(article => article.id !== id);
+          },
+         
+        );
+      }
+    });
+  }
+  
+  editArticle(article: Article): void {
+    const dialogRef = this.dialog.open(ArticleEditComponent, {
+      width: '500px',
+      data: { article: article } 
+      
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.articleService.update(result).subscribe(() => {
+          this.getAll();
+        });
+      }
+    });
   }
 
   getAll() {

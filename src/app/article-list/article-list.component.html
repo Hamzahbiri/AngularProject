@@ -28,12 +28,12 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-fab color="warn" aria-label="Example icon button with a delete icon">
+          <button mat-fab color="warn" aria-label="Delete" (click)="deleteArticle(element.id)">
             <mat-icon>delete</mat-icon>
           </button>
-          <button mat-fab color="accent" aria-label="Example icon button with a edit icon" >
-            <mat-icon>edit</mat-icon>
-          </button>
+           <button mat-fab color="accent" (click)="editArticle(element)">
+    <mat-icon>edit</mat-icon>
+  </button>
         </td>
       </ng-container>
       
