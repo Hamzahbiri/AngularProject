@@ -5,7 +5,6 @@
         <mat-form-field class="example-full-width">
           <mat-label>Article Name</mat-label>
           <input matInput placeholder="Pizza" formControlName="articleName">
-
         </mat-form-field>
       </td>
     </tr>
@@ -13,7 +12,7 @@
       <td>
         <mat-form-field>
           <mat-label>Category</mat-label>
-          <mat-select formControlName="category">
+          <mat-select formControlName="categoryId">
             <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.nomcategorie }}</mat-option>
           </mat-select>
         </mat-form-field>

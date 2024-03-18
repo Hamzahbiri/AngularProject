@@ -21,7 +21,6 @@ export class CategoryService {
   update(category: Category): Observable<void> {
     return this.httpClient.put<void>('http://localhost:8000/api/categories/' + category.id, category);
   }
-
   deleteById(id: string): Observable<void> {
     console.log('Deleting category with ID:', id);
     return this.httpClient.delete<void>('http://localhost:8000/api/categories/' + id);

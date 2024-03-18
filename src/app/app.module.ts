@@ -30,6 +30,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogCategoryComponent } from './confirmation-dialog-category/confirmation-dialog-category.component';
+import { CategoryFormComponent } from './category-form/category-form.component';
+import { EditCategoryDialogComponent } from './edit-category-dialog/edit-category-dialog.component';
 
 
 @NgModule({
@@ -41,7 +43,10 @@ import { ConfirmationDialogCategoryComponent } from './confirmation-dialog-categ
     ArticleFormComponent,
     ArticleEditComponent,
     ConfirmationDialogComponent,
-    ConfirmationDialogCategoryComponent
+    ConfirmationDialogCategoryComponent,
+    CategoryFormComponent,
+    EditCategoryDialogComponent,
+    
   ],
   imports: [
     BrowserModule,

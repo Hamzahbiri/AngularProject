@@ -4,6 +4,8 @@ import { CategoryService } from 'src/services/category.service';
 import { ConfirmationDialogCategoryComponent } from '../confirmation-dialog-category/confirmation-dialog-category.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { EditCategoryDialogComponent } from '../edit-category-dialog/edit-category-dialog.component';
 
 @Component({
   selector: 'app-category-list',
@@ -16,24 +18,22 @@ export class CategoryListComponent implements OnInit {
     'id',
     'nameCat',
     'actions',
-   ];
-   tab:Category[]=[];
- 
-   ngOnInit(): void {
-     this.getAll();
-   }
- 
+  ];
+  tab: Category[] = [];
+  editMode: boolean = false; // Add editMode property
 
+  constructor(private categoryService: CategoryService, public dialog: MatDialog, private ref: ChangeDetectorRef, private router: Router) {}
 
-  constructor(private categoryService:CategoryService, public dialog: MatDialog, private ref: ChangeDetectorRef) {
-       
-  } 
+  ngOnInit(): void {
+    this.getAll();
+  }
+
   deleteCategory(id: string) {
     const dialogRef = this.dialog.open(ConfirmationDialogCategoryComponent, {
       width: '250px',
       data: 'Are you sure you want to delete this category?'
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // User confirmed deletion
@@ -53,26 +53,32 @@ export class CategoryListComponent implements OnInit {
       }
     });
   }
-  
-  // Helper method to trigger change detection
+
   private detectChanges(): void {
     try {
-      // This forces Angular to detect changes and update the UI
+
       this.ref.detectChanges();
     } catch (e) {
-      // Handle any error that may occur during change detection
+
       console.error('Error during change detection:', e);
     }
   }
-  
-  
+  openEditDialog(category: Category): void {
+    const dialogRef = this.dialog.open(EditCategoryDialogComponent, {
+      width: '250px',
+      data: category
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
   getAll() {
     this.categoryService.getAll().subscribe(
-      (categories:Category[])=>{
-        this.tab=categories
-      }   
+      (categories: Category[]) => {
+        this.tab = categories
+      }
     )
   }
 }

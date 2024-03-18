@@ -4,8 +4,15 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { LoginComponent } from './login/login.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
+import { CategoryFormComponent } from './category-form/category-form.component';
 
 const routes: Routes = [
+  
+  {
+    path: "category-form",
+    pathMatch: 'full',
+    component: CategoryFormComponent
+  },
   {
     path: "article-form",
     pathMatch: 'full',
