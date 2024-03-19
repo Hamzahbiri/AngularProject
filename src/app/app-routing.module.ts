@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { LayoutComponent } from './layout/layout.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   
@@ -18,8 +19,14 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'articles', component: ArticleListComponent },
       { path: 'categories', component: CategoryListComponent },
+      { path: 'about', component: AboutUsComponent },
       { path: '', redirectTo: '/articles', pathMatch: 'full' }
     ]
+  },
+  {
+    path: "about",
+    pathMatch: 'full',
+    component: AboutUsComponent
   },
   {
     path: "category-form",

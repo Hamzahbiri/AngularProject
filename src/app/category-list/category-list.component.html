@@ -1,3 +1,4 @@
+<div class="form-container">
 <table mat-table [dataSource]="tab" class="mat-elevation-z8 demo-table">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>Id</th>
@@ -22,3 +23,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</div>

@@ -33,6 +33,7 @@ import { ConfirmationDialogCategoryComponent } from './confirmation-dialog-categ
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { EditCategoryDialogComponent } from './edit-category-dialog/edit-category-dialog.component';
 import { LayoutComponent } from './layout/layout.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { LayoutComponent } from './layout/layout.component';
     CategoryFormComponent,
     EditCategoryDialogComponent,
     LayoutComponent,
+    AboutUsComponent,
     
   ],
   imports: [
