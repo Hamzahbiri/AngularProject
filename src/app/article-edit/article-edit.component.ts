@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Category } from 'src/models/Category';
 import { Article } from 'src/models/Article';
 import { CategoryService } from 'src/services/category.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'src/services/article.service';
 
 @Component({
@@ -15,15 +15,15 @@ export class ArticleEditComponent implements OnInit {
   categories: Category[] = [];
 
   constructor(
+    public dialogRef: MatDialogRef<ArticleEditComponent>,
     private categoryService: CategoryService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    @Inject(MAT_DIALOG_DATA) public data: any // Inject the data
   ) { }
 
   ngOnInit(): void {
     this.getCategories();
-    this.getArticle();
+  
   }
 
   getCategories() {
@@ -34,27 +34,19 @@ export class ArticleEditComponent implements OnInit {
     );
   }
 
-  getArticle() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      this.articleService.getById(id).subscribe(
-        (article: Article) => {
-          this.article = article;
-        }
-      );
-    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
-  updateArticle() {
+  changeData() {
     this.articleService.update(this.article).subscribe(
       () => {
         console.log('Article updated successfully.');
-       
-        this.router.navigate(['/articles']);
+        this.dialogRef.close(this.article); // Pass updated data back to the component that opened the dialog
       },
       (error) => {
         console.error('Error updating article:', error);
- 
       }
     );
   }

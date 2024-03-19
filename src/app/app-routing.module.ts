@@ -5,9 +5,22 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { LoginComponent } from './login/login.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      { path: 'category-form', component: CategoryFormComponent },
+      { path: 'article-form', component: ArticleFormComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'articles', component: ArticleListComponent },
+      { path: 'categories', component: CategoryListComponent },
+      { path: '', redirectTo: '/articles', pathMatch: 'full' }
+    ]
+  },
   {
     path: "category-form",
     pathMatch: 'full',
@@ -37,7 +50,7 @@ const routes: Routes = [
 
   {
     path:"**",
-    redirectTo:"articles"
+    redirectTo:"home"
   }
 
 ];

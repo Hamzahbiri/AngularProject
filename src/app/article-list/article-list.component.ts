@@ -57,16 +57,12 @@ export class ArticleListComponent implements OnInit {
   editArticle(article: Article): void {
     const dialogRef = this.dialog.open(ArticleEditComponent, {
       width: '500px',
-      data: { article: article } 
+      data:  article
       
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.articleService.update(result).subscribe(() => {
-          this.getAll();
-        });
-      }
+      console.log('The dialog was closed');
     });
   }
 

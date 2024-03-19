@@ -1,10 +1,12 @@
-<form [formGroup]="categoryForm" (ngSubmit)="submitForm()"style="background-color: rgba(0, 0, 0, 0.71);">
-    <mat-form-field appearance="outline">
+<div class="form-container">
+  <h2 class="form-title">Add a new category</h2>
+  <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+    <mat-form-field appearance="outline" class="form-field">
       <mat-label>Category Name</mat-label>
       <input matInput formControlName="categoryName" placeholder="Enter category name">
       <mat-error *ngIf="categoryForm.controls['categoryName'].hasError('required')">Category Name is required</mat-error>
     </mat-form-field>
-  
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <br>
+    <button mat-raised-button color="primary" type="submit" class="form-button">Submit</button>
   </form>
-  
+</div>

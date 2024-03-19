@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Category } from '../../models/Category'; // Adjust the path as per your project structure
+import { Category } from '../../models/Category';
 import { CategoryService } from 'src/services/category.service';
 
 @Component({
@@ -22,18 +22,16 @@ export class EditCategoryDialogComponent {
     if (this.data) {
       const updatedCategory: Category = {
         id: this.data.id,
-        nomcategorie: this.data.nomcategorie // Update only the name
+        nomcategorie: this.data.nomcategorie 
       };
   
       this.categoryService.update(updatedCategory).subscribe(
         () => {
-          this.data.nomcategorie = updatedCategory.nomcategorie; // Update the local data with the new name
+          this.data.nomcategorie = updatedCategory.nomcategorie;
           console.log('Category updated successfully:', this.data);
-          this.dialogRef.close(this.data); // Pass updated data back to the component that opened the dialog
+          this.dialogRef.close(this.data); 
         },
-        error => {
-          console.error('Error updating category:', error);
-        }
+      
       );
     }
   

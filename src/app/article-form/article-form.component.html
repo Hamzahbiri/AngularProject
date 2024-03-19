@@ -1,48 +1,51 @@
-<form class="example-form" [formGroup]="articleForm" (ngSubmit)="submitForm()">
-  <table>
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Article Name</mat-label>
-          <input matInput placeholder="Pizza" formControlName="articleName">
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <mat-form-field>
-          <mat-label>Category</mat-label>
-          <mat-select formControlName="categoryId">
-            <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.nomcategorie }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <mat-form-field>
-          <mat-label>Description</mat-label>
-          <textarea matInput formControlName="description"></textarea>
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Prix</mat-label>
-          <input matInput placeholder="Price" type="number" formControlName="prix">
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width">
-          <mat-label>Image</mat-label>
-          <input matInput placeholder="Image URL" formControlName="image">
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+<div class="form-container">
+  <h2 class="form-title">Add a new article</h2>
+  <form class="example-form" [formGroup]="articleForm" (ngSubmit)="submitForm()">
+    <table>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Article Name</mat-label>
+            <input matInput placeholder="Pizza" formControlName="articleName">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="categoryId">
+              <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.nomcategorie }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Prix</mat-label>
+            <input matInput placeholder="Price" type="number" formControlName="prix">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Image</mat-label>
+            <input matInput placeholder="Image URL" formControlName="image">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
-  <button mat-raised-button color="primary" type="submit">Submit</button>
-</form>
+    <button mat-raised-button color="primary" type="submit" class="example-button">Submit</button>
+  </form>
+</div>
