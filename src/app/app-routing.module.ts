@@ -7,6 +7,8 @@ import { ArticleFormComponent } from './article-form/article-form.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { MenuComponent } from './menu/menu.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   
@@ -20,8 +22,22 @@ const routes: Routes = [
       { path: 'articles', component: ArticleListComponent },
       { path: 'categories', component: CategoryListComponent },
       { path: 'about', component: AboutUsComponent },
+      { path: 'menu', component: MenuComponent },
+      { path: 'orders', component: OrderComponent },
       { path: '', redirectTo: '/articles', pathMatch: 'full' }
+      
     ]
+  },
+
+   {
+    path: "orders",
+    pathMatch: 'full',
+    component: OrderComponent
+  },
+  {
+    path: "menu",
+    pathMatch: 'full',
+    component: MenuComponent
   },
   {
     path: "about",
