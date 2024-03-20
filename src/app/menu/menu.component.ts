@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Article } from 'src/models/Article';
 import { Category } from 'src/models/Category';
 import { ArticleService } from 'src/services/article.service';
@@ -12,9 +13,9 @@ import { CategoryService } from 'src/services/category.service';
 export class MenuComponent implements OnInit {
   categories: Category[] = [];
   articles: Article[] = [];
-  isLoading: boolean = true;
 
-  constructor(private categoryService: CategoryService, private articleService: ArticleService) { }
+
+  constructor(private categoryService: CategoryService, private articleService: ArticleService,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -26,9 +27,7 @@ export class MenuComponent implements OnInit {
       (categories: Category[]) => {
         this.categories = categories;
       },
-      error => {
-        console.error('Error fetching categories:', error);
-      }
+      
     );
   }
 
@@ -36,16 +35,14 @@ export class MenuComponent implements OnInit {
     this.articleService.getAll().subscribe(
       (articles: Article[]) => {
         this.articles = articles;
-        this.isLoading = false;
       },
-      error => {
-        console.error('Error fetching articles:', error);
-        this.isLoading = false;
-      }
+     
     );
   }
-
   order(article: Article): void {
-  
+    const message = `You have ordred:  ${article.nomarticle}`;
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+    });
   }
 }

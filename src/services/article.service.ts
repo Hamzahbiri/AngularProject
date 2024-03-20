@@ -16,9 +16,11 @@ export class ArticleService {
      return  this.httpClient.post<void>('http://localhost:8000/api/articles', article);
  
   }
-  getById(id: string): Observable<Article> {
-    return this.httpClient.get<Article>('http://localhost:8000/api/articles/' + id);
+  
+  getArticlesByCategory(categoryId: string): Observable<Article[]> {
+    return this.httpClient.get<Article[]>('http://localhost:8000/api/articles/' + categoryId);
   }
+
   
  update(article: Article): Observable<void> {
   return this.httpClient.put<void>('http://localhost:8000/api/articles/' + article.id, article);
