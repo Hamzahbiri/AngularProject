@@ -16,12 +16,15 @@ export class ArticleService {
      return  this.httpClient.post<void>('http://localhost:8000/api/articles', article);
  
   }
+  // TODO : create api on backend side for recovering getArticlesByCaztegory, this doesn't work
   getArticlesByCategory(categoryId: string): Observable<Article[]> {
     return this.httpClient.get<Article[]>('http://localhost:8000/api/articles/' + categoryId);
   }
 
   
  update(article: Article): Observable<void> {
+  console.log("Updating article : ");
+  console.log(article);
   return this.httpClient.put<void>('http://localhost:8000/api/articles/' + article.id, article);
 }
 

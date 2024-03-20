@@ -51,7 +51,8 @@ export class ArticleFormComponent implements OnInit {
         description: this.articleForm.value.description,
         prix: this.articleForm.value.prix,
         imageart: this.articleForm.value.image,
-        category: { id: this.articleForm.value.categoryId, nomcategorie: '' } 
+        categorieID: this.articleForm.value.categoryId,
+        categories: { id: this.articleForm.value.categoryId, nomcategorie: '' } 
       };
 
       this.articleService.save(newArticle).subscribe(

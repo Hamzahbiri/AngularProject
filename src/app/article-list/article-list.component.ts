@@ -5,6 +5,7 @@ import { Article } from 'src/models/Article';
 import { ArticleService } from 'src/services/article.service';
 import { ArticleEditComponent } from '../article-edit/article-edit.component';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
@@ -25,7 +26,8 @@ export class ArticleListComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router : Router
   ) {
     this.getAll();
   }
@@ -63,6 +65,7 @@ export class ArticleListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.getAll();
     });
   }
 

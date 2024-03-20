@@ -1,3 +1,7 @@
+h6{
+  color: black !important;
+  font-size: large;
+}
 .font-handwriting {
     font-family: 'Dancing Script', cursive;
 }

@@ -12,25 +12,23 @@ import { CategoryService } from 'src/services/category.service';
 })
 export class MenuComponent implements OnInit {
  
-  categories: Category[] = [];
-  tab: Article[] = [];
+  categoryTab: Category[] = [];
+  tab: any[] = [];
   
 
 
-  constructor(private categoryService: CategoryService, private articleService: ArticleService,private snackBar: MatSnackBar) 
-  { 
-    this.getArticles();
-  }
+  constructor(private categoryService: CategoryService, private articleService: ArticleService,private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
    
     this.getArticles();
+    this.getCategories();
   }
 
   getCategories() {
     this.categoryService.getAll().subscribe(
       (categories: Category[]) => {
-        this.categories = categories;
+        this.categoryTab = categories;
       },
       
     );
@@ -40,7 +38,7 @@ export class MenuComponent implements OnInit {
     this.articleService.getAll().subscribe(
       (articles: Article[]) => {
         this.tab = articles;
-        
+        console.log(this.tab);
       },
      
     );

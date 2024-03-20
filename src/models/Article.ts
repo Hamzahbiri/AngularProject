@@ -6,5 +6,6 @@ export interface Article {
     description:string;
     prix:string;
     imageart :string;
-    category:Category;
+    categorieID:string;
+    categories:Category;
 }
