@@ -1,3 +1,4 @@
+
 <div class="home-container">
   <div class="Menu-container">
     <div class="menu-section text-center">
@@ -5,11 +6,17 @@
     </div>
     <div class="container mt-3">
       <div class="row">
-        <div class="col-md-4" *ngFor="let art of articles">
+        <div class="col-md-4" *ngFor="let art of tab">
           <div class="card mb-4 sh">
             <img class="card-img-top" [src]="art.imageart" alt="Image" width="415" height="350" preview>
             <div class="card-body">
               <h5 class="card-title">{{ art.nomarticle }}</h5>
+
+              <!-- <h6>{{art.category.nomcategorie}}</h6> -->
+
+              <!-- <div *ngFor="let category of categories" >
+                <h6>{{ category.nomcategorie }}</h6>
+              </div>            -->
               <p class="card-text">{{ art.description }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <p class="card-text"><strong class="card-price">{{ art.prix }} $</strong></p>

@@ -11,14 +11,19 @@ import { CategoryService } from 'src/services/category.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+ 
   categories: Category[] = [];
-  articles: Article[] = [];
+  tab: Article[] = [];
+  
 
 
-  constructor(private categoryService: CategoryService, private articleService: ArticleService,private snackBar: MatSnackBar) { }
+  constructor(private categoryService: CategoryService, private articleService: ArticleService,private snackBar: MatSnackBar) 
+  { 
+    this.getArticles();
+  }
 
   ngOnInit(): void {
-    this.getCategories();
+   
     this.getArticles();
   }
 
@@ -34,14 +39,16 @@ export class MenuComponent implements OnInit {
   getArticles() {
     this.articleService.getAll().subscribe(
       (articles: Article[]) => {
-        this.articles = articles;
+        this.tab = articles;
+        
       },
      
     );
   }
   order(article: Article): void {
     const message = `You have ordred:  ${article.nomarticle}`;
-    this.snackBar.open(message, 'Close', {
+    console.log(article);
+      this.snackBar.open(message, 'Close', {
       duration: 3000,
     });
   }

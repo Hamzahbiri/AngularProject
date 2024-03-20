@@ -2,7 +2,7 @@
 
     <!-- The side nav -->
     <mat-sidenav #drawer fixedInViewport="true" mode="over" opened="false" style="width: 230px;">
-      <mat-toolbar color="primary" fxLayout fxLayoutGap="16px">
+      <mat-toolbar style="background-color: var(--custom-color)" fxLayout fxLayoutGap="16px">
         <mat-icon>fastfood</mat-icon>
         <span> Tmakhmikha </span>
       </mat-toolbar>
@@ -20,7 +20,7 @@
   
     <!-- Side nav content-->
     <mat-sidenav-content>
-      <mat-toolbar color="primary">
+      <mat-toolbar style="background-color: var(--custom-color)">
         <div fxFlex fxLayout fxLayoutAlign="start center" >
           <button type="button" aria-label="Toggle sidenav" class="toolbar-button"
                   mat-icon-button (click)="drawer.toggle()">
