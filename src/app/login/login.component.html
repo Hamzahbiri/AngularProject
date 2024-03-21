@@ -1,5 +1,10 @@
-<mat-card>
-    <mat-card-content>
-        <button (click) = signIn()>Sign In with Google</button>
+<mat-card class="h-100" [@fadeInAnimation]>
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
+      <div class="welcome-message">Welcome to Our Restaurant</div>
+      <button mat-raised-button color="primary" (click)="signIn()">
+        <mat-icon class="mr-8">G</mat-icon>
+        Sign In with Google
+      </button>
     </mat-card-content>
-</mat-card>
+  </mat-card>
+  

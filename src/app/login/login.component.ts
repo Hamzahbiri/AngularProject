@@ -1,11 +1,21 @@
 import { Component, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from 'src/services/authentification.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [
+    trigger('fadeInAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1.5s', style({ opacity: 2 })),
+      ]),
+    ]),
+  ],
+
 })
 export class LoginComponent {
 

@@ -11,7 +11,9 @@ import { MenuComponent } from './menu/menu.component';
 import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
-  
+  {
+    path: '', component: LoginComponent
+  },
   {
     path: '',
     component: LayoutComponent,
@@ -23,9 +25,7 @@ const routes: Routes = [
       { path: 'categories', component: CategoryListComponent },
       { path: 'about', component: AboutUsComponent },
       { path: 'menu', component: MenuComponent },
-      { path: 'orders', component: OrderComponent },
-      { path: '', redirectTo: '/articles', pathMatch: 'full' }
-      
+      { path: 'orders', component: OrderComponent },     
     ]
   },
 
@@ -73,7 +73,7 @@ const routes: Routes = [
 
   {
     path:"**",
-    redirectTo:"home"
+    redirectTo:"menu"
   }
 
 ];
