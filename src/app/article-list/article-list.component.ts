@@ -69,6 +69,10 @@ export class ArticleListComponent implements OnInit {
     });
   }
 
+  navigateToArticles(): void {
+    this.router.navigateByUrl('/article-form');
+  }
+
   getAll() {
     this.articleService.getAll().subscribe(
       (articles: Article[]) => {

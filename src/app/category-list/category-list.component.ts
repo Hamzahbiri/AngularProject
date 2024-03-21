@@ -74,6 +74,10 @@ export class CategoryListComponent implements OnInit {
     });
   }
 
+  navigateToCategory(): void {
+    this.router.navigateByUrl('/category-form');
+  }
+
   getAll() {
     this.categoryService.getAll().subscribe(
       (categories: Category[]) => {

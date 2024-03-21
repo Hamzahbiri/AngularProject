@@ -1,3 +1,7 @@
+<button mat-raised-button color="accent" class="m-3" aria-label="Add" (click)="navigateToArticles()">
+  <mat-icon>add</mat-icon>New article
+</button>
+
 <table mat-table [dataSource]="tab" class="mat-elevation-z8 demo-table">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>Id</th>
