@@ -15,12 +15,17 @@ export class LoginComponent {
   signIn() {
     this.AuthService.doGoogleLogin().then( () => {
       this.successRedirect();
+      
     })
   }
+
   successRedirect() {
-    this.ngZone.run( () => {
-      this.router.navigate(['/menu'])
-    })
+    this.AuthService.getUserProfile().then(profile => {
+            this.ngZone.run(() => {
+        console.log('test'+profile.displayName)
+        this.router.navigate(['/menu'], { state: { profile } });
+      });
+    });
   }
 
 }

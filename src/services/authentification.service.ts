@@ -7,7 +7,6 @@ import * as auth from 'firebase/auth';
 })
 export class AuthentificationService {
     public userClaims: any;
-  //  public userClaims$ = new Subject<any>();
 
     constructor(
         public afAuth: AngularFireAuth,
@@ -40,19 +39,29 @@ export class AuthentificationService {
         });
     }
 
+    getUserProfile(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+          this.afAuth.onAuthStateChanged(user => {
+            if (!!user) {
+              resolve({
+                displayName: user.displayName,
+                photoURL: user.photoURL
+              });
+            } else {
+              reject('No user logged in');
+            }
+          });
+        });
+      }
+    
+
     setUserClaims(user: any): void {
         this.userClaims = user;
-    //    this.userClaims$.next(user);
+        
+  
     }
 
 
-    // doFacebookLogin(): Promise<any> {
-    //     return this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
-    // }
-    //
-    // doTwitterLogin(): Promise<any> {
-    //     return this.afAuth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
-    // }
 
     doGoogleLogin(): Promise<any> {
         return this.afAuth.signInWithPopup(new auth.GoogleAuthProvider());
