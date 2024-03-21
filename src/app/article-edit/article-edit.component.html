@@ -1,12 +1,12 @@
 <h1 mat-dialog-title class="dialog-title">Edit Article</h1>
 <div mat-dialog-content class="dialog-content">
-  <form>
+  <form [formGroup]="articleEdit">
     <table>
       <tr>
         <td>
           <mat-form-field class="example-full-width">
             <mat-label>Article Name</mat-label>
-            <input matInput placeholder="Pizza" [(ngModel)]="article.nomarticle" name="nomarticle" required>
+            <input matInput placeholder="Pizza" formControlName="nomarticle" required>
           </mat-form-field>
         </td>
       </tr>
@@ -14,7 +14,7 @@
         <td>
           <mat-form-field>
             <mat-label>Category</mat-label>
-            <mat-select [(ngModel)]="article.categorieID" name="category" [value]="article.categories.id">
+            <mat-select formControlName="categorieID">
               <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.nomcategorie }}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -24,7 +24,7 @@
         <td>
           <mat-form-field>
             <mat-label>Description</mat-label>
-            <textarea matInput [(ngModel)]="article.description" name="description" required></textarea>
+            <textarea matInput formControlName="description" required></textarea>
           </mat-form-field>
         </td>
       </tr>
@@ -32,7 +32,7 @@
         <td>
           <mat-form-field class="example-full-width">
             <mat-label>Prix</mat-label>
-            <input matInput placeholder="Price" type="number" [(ngModel)]="article.prix" name="prix" required>
+            <input matInput placeholder="Price" type="number" formControlName="prix" required>
           </mat-form-field>
         </td>
       </tr>
@@ -40,7 +40,7 @@
         <td>
           <mat-form-field class="example-full-width">
             <mat-label>Image</mat-label>
-            <input matInput placeholder="Image URL" [(ngModel)]="article.imageart" name="imageart" required>
+            <input matInput placeholder="Image URL" formControlName="imageart" required>
           </mat-form-field>
         </td>
       </tr>

@@ -19,7 +19,7 @@ export class LoginComponent {
   }
   successRedirect() {
     this.ngZone.run( () => {
-      this.router.navigate(['/articles'])
+      this.router.navigate(['/menu'])
     })
   }
 
