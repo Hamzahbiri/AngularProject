@@ -43,6 +43,11 @@ export class MenuComponent implements OnInit {
      
     );
   }
+  
+  getArticlesByCategory(categoryId:any): Article[] {
+    return this.tab.filter(article => article.categorieID === categoryId);
+  }
+  
   order(article: Article): void {
     const message = `You have ordred:  ${article.nomarticle}`;
     console.log(article);

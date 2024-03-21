@@ -1,5 +1,5 @@
-<h1 mat-dialog-title>Edit Article</h1>
-<div mat-dialog-content>
+<h1 mat-dialog-title class="dialog-title">Edit Article</h1>
+<div mat-dialog-content class="dialog-content">
   <form>
     <table>
       <tr>
@@ -45,9 +45,9 @@
         </td>
       </tr>
     </table>
-    <div mat-dialog-actions>
-      <button mat-button (click)="onNoClick()">Cancel</button>
-      <button mat-button (click)="changeData()" cdkFocusInitial>Save</button>
-    </div>
   </form>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="changeData()" cdkFocusInitial>Save</button>
 </div>

@@ -4,6 +4,7 @@ import { Category } from 'src/models/Category';
 import { CategoryService } from 'src/services/category.service';
 import { Article } from 'src/models/Article';
 import { ArticleService } from 'src/services/article.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-form',
@@ -17,7 +18,8 @@ export class ArticleFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private articleService: ArticleService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router: Router 
   ) {
     this.articleForm = this.fb.group({
       articleName: ['', Validators.required],
@@ -59,6 +61,7 @@ export class ArticleFormComponent implements OnInit {
         () => {
           console.log('Article added successfully!');
           this.articleForm.reset();
+          this.router.navigateByUrl('/articles');
         },
         error => {
           console.error('Error adding article:', error);
