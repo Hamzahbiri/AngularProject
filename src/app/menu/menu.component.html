@@ -1,12 +1,12 @@
-<div class="home-container" fxLayout="column" fxLayoutAlign="start stretch">
+<div class="home-container" fxLayout="column" fxLayoutAlign="start stretch">  
   <div class="Menu-container" fxLayout="column" fxLayoutAlign="start stretch">
     <div class="menu-section text-center">
-      <h1 class="display-2 font-handwriting text-light mb-4">The Menu</h1>
+      <h1 class="display-3 font-handwriting text-light m-4">The Menu</h1>
     </div>
     <div class="container mt-3">
       <div class="row" *ngFor="let category of categoryTab" fxLayout="column" fxLayoutAlign="start stretch">
         <div class="col-md-12">
-          <h2>{{ category.nomcategorie }}</h2>
+          <h2>Nos {{ category.nomcategorie }}</h2>
           <div class="row" fxLayout="row wrap" fxLayoutAlign="start start">
             <div class="col-md-4" *ngFor="let article of getArticlesByCategory(category.id)" fxLayout="column">
               <div class="card mb-4 sh">
@@ -16,7 +16,7 @@
                   <h5 class="card-title">{{ article.nomarticle }}</h5>
                   <p class="card-text">{{ article.description }}</p>
                 </div>
-                
+                <br>
                   <div  fxLayout="row" fxLayoutAlign="space-between end">
                     <p class="card-text"><strong class="card-price">{{ article.prix }} $</strong></p>
                     <button class="order-button" (click)="order(article)">Order</button>
