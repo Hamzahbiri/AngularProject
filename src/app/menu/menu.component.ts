@@ -54,9 +54,7 @@ export class MenuComponent implements OnInit {
   }
   
   order(article: Article): void {
-    console.log(this.userProfile)
     const message = `You have ordred:  ${article.nomarticle}`;
-    console.log(article);
     this.snackBar.open(message, 'Close', {
       duration: 3000,
     });

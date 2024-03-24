@@ -33,6 +33,9 @@ constructor(
 ngOnInit(): void {
   this.getAll();
 }
+navigateToMenu(): void {
+  this.router.navigateByUrl('/menu');
+}
 
 getAll() {
   // load orders
@@ -55,11 +58,10 @@ getAll() {
               client_id:order.user_id,
               articles: relatedItems.map(item=>item.article_id).join("; "),
             };
-            this.orderProxy.push(op)
+            this.orderProxy.push(op)   
           });
 
-
-          console.log(this.orderProxy);
+        
     
         }
       );
