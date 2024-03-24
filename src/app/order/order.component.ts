@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Article } from 'src/models/Article';
 import { Order } from 'src/models/Order';
 import { OrderItem } from 'src/models/OrderItem';
 import { OrderProxy } from 'src/models/OrderProxy';
+import { ArticleService } from 'src/services/article.service';
 import { OrderItemService } from 'src/services/order-item.service';
 import { OrderService } from 'src/services/order.service';
 
@@ -18,13 +20,15 @@ displayedColumns: string[] = [
   'order_id',
   'client_id',
   'articles',
+  'price',
   'actions'
 ];
 orderTable: OrderProxy[] =  [];
 
 constructor(
   private orderItemService: OrderItemService,
-  public orderService: OrderService,
+  private orderService: OrderService,
+  private articleService : ArticleService,
   private router : Router
 ) {
 }
@@ -41,25 +45,50 @@ getAll() {
   // load orders
   this.orderService.getAll().subscribe(
     (orders: Order[]) => {
-      this.orders = orders;
-      console.log(this.orders)
+     // console.log(orders)
 
       // load items : 
       this.orderItemService.getAll().subscribe(
         (orderItems : OrderItem[]) =>{
-          this.orderItems = orderItems;
-          console.log(this.orderItems);
+          //console.log(orderItems);
+
+          // load articles : 
+          this.articleService.getAll().subscribe(
+            (articles : Article[]) =>{
+              //console.log(articles)
+              
 
           // join
-          this.orders.forEach(order => {
-            var relatedItems = orderItems.filter(item => item.order_id == order.id);
-            const op : OrderProxy = {
-              order_id:order.id,
-              client_id:order.user_id,
-              articles: relatedItems.map(item=>item.article_id).join("; "),
-            };
-            this.orderTable.push(op)
-          });
+
+              orders.forEach(order => {
+                var relatedItems = orderItems.filter(item => item.order_id == order.id); 
+                var relatedArticles = relatedItems.map(item=>{
+                  var art = articles.find( a => a.id == item.article_id)
+                  //console.log(art);
+                  return art?.nomarticle
+                });
+
+                var prixTotal =  relatedItems.map(item=>{
+                  var art = articles.find( a => a.id == item.article_id)
+                  console.log(art); 
+                  return Number.parseFloat(art!.prix)
+                }).reduce((sum, current)=>sum + current,0);
+
+                //console.log(relatedArticles);
+                const op : OrderProxy = {
+                  order_id:order.id,
+                  client_id:order.user_id,
+                  articles: relatedArticles.join(" ; "),
+                  price: prixTotal,
+                };
+                this.orderTable.push(op)
+              });
+
+
+              //console.log(this.orderTable);
+            }
+          )
+
 
         
     
