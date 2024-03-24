@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Article } from 'src/models/Article';
 import { Category } from 'src/models/Category';
 import { ArticleService } from 'src/services/article.service';
+import { AuthentificationService } from 'src/services/authentification.service';
 import { CategoryService } from 'src/services/category.service';
 
 @Component({
@@ -11,16 +12,20 @@ import { CategoryService } from 'src/services/category.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
- 
+  userProfile : any
   categoryTab: Category[] = [];
   tab: any[] = [];
   
 
 
-  constructor(private categoryService: CategoryService, private articleService: ArticleService,private snackBar: MatSnackBar) {}
+  constructor(private categoryService: CategoryService, private articleService: ArticleService,private snackBar: MatSnackBar, private authService: AuthentificationService) {}
 
   ngOnInit(): void {
-   
+    this.authService.getUserProfile().then(
+      (res) => {
+        this.userProfile = res;
+      }
+    );
     this.getArticles();
     this.getCategories();
   }
@@ -49,9 +54,10 @@ export class MenuComponent implements OnInit {
   }
   
   order(article: Article): void {
+    console.log(this.userProfile)
     const message = `You have ordred:  ${article.nomarticle}`;
     console.log(article);
-      this.snackBar.open(message, 'Close', {
+    this.snackBar.open(message, 'Close', {
       duration: 3000,
     });
   }

@@ -32,7 +32,6 @@ export class LoginComponent {
   successRedirect() {
     this.AuthService.getUserProfile().then(profile => {
             this.ngZone.run(() => {
-        console.log('test'+profile.displayName)
         this.router.navigate(['/menu'], { state: { profile } });
       });
     });

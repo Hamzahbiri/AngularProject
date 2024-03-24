@@ -43,9 +43,11 @@ export class AuthentificationService {
         return new Promise<any>((resolve, reject) => {
           this.afAuth.onAuthStateChanged(user => {
             if (!!user) {
+                console.log(user.uid);
               resolve({
                 displayName: user.displayName,
-                photoURL: user.photoURL
+                photoURL: user.photoURL,
+                userId : user.uid
               });
             } else {
               reject('No user logged in');
