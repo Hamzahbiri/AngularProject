@@ -17,6 +17,7 @@ orderItems : OrderItem[] = [];
 displayedColumns: string[] = [
   'order_id',
   'client_id',
+  'articles',
   'actions'
 ];
 orderProxy: OrderProxy[] =  [];
