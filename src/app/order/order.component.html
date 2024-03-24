@@ -3,7 +3,7 @@
   </button>
 
   
-  <table *ngIf="orderProxy.length > 0" mat-table [dataSource]="orderProxy" class="mat-elevation-z8 demo-table">
+  <table *ngIf="orderTable.length > 0" mat-table [dataSource]="orderTable" class="mat-elevation-z8 demo-table">
     <ng-container matColumnDef="order_id">
         <th mat-header-cell *matHeaderCellDef>Order</th>
         <td mat-cell *matCellDef="let element">{{ element.order_id}}</td>

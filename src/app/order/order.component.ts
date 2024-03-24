@@ -20,7 +20,7 @@ displayedColumns: string[] = [
   'articles',
   'actions'
 ];
-orderProxy: OrderProxy[] =  [];
+orderTable: OrderProxy[] =  [];
 
 constructor(
   private orderItemService: OrderItemService,
@@ -51,14 +51,14 @@ getAll() {
           console.log(this.orderItems);
 
           // join
-          orders.forEach(order => {
+          this.orders.forEach(order => {
             var relatedItems = orderItems.filter(item => item.order_id == order.id);
             const op : OrderProxy = {
               order_id:order.id,
               client_id:order.user_id,
               articles: relatedItems.map(item=>item.article_id).join("; "),
             };
-            this.orderProxy.push(op)   
+            this.orderTable.push(op)
           });
 
         
